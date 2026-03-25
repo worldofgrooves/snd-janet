@@ -31,6 +31,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <section className="px-0 md:px-0">
         <PlaceholderImage
           label={project.heroLabel}
+          src={project.heroImage}
           aspectRatio="21/9"
           className="w-full rounded-none"
         />
@@ -92,6 +93,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               <PlaceholderImage
                 key={`gallery-1-${i}`}
                 label={`Gallery Image ${i + 1} -- Detail`}
+                src={project.galleryImages?.[i]}
                 aspectRatio="4/3"
               />
             ))}
@@ -110,6 +112,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
           {/* Full-width gallery image */}
           <PlaceholderImage
             label={`Gallery Image -- Full Width Detail`}
+            src={project.galleryImages?.[2]}
             aspectRatio="16/9"
           />
 
@@ -129,6 +132,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               <PlaceholderImage
                 key={`gallery-2-${i}`}
                 label={`Gallery Image ${i + 4} -- Detail`}
+                src={project.galleryImages?.[i + 3]}
                 aspectRatio="3/4"
               />
             ))}

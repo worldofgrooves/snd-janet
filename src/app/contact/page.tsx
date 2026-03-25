@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+
 const projectTypes = [
   "Brand Identity",
   "Creative Direction",
@@ -24,9 +26,64 @@ const budgetRanges = [
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    // If Formspree is configured, submit via API
+    if (FORMSPREE_ID) {
+      setSubmitting(true);
+      try {
+        const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+          method: "POST",
+          body: formData,
+          headers: { Accept: "application/json" },
+        });
+        if (res.ok) {
+          setSubmitted(true);
+        } else {
+          setError("Something went wrong. Please try emailing us directly.");
+        }
+      } catch {
+        setError("Something went wrong. Please try emailing us directly.");
+      } finally {
+        setSubmitting(false);
+      }
+      return;
+    }
+
+    // Fallback: construct mailto link
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const company = formData.get("company") as string;
+    const projectType = formData.get("projectType") as string;
+    const budget = formData.get("budget") as string;
+    const message = formData.get("message") as string;
+
+    const subject = encodeURIComponent(
+      `New Inquiry from ${name}${company ? ` (${company})` : ""}`
+    );
+    const body = encodeURIComponent(
+      [
+        `Name: ${name}`,
+        `Email: ${email}`,
+        company && `Company: ${company}`,
+        projectType && `Project Type: ${projectType}`,
+        budget && `Budget: ${budget}`,
+        "",
+        message,
+      ]
+        .filter(Boolean)
+        .join("\n")
+    );
+
+    window.location.href = `mailto:denver@madebyplume.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
@@ -54,7 +111,7 @@ export default function ContactPage() {
                     We&apos;ve received your message.
                   </p>
                   <p className="text-text-secondary text-sm">
-                    This is a prototype -- no message was actually sent. In the live site, this form will connect to your intake workflow.
+                    We&apos;ll be in touch within one business day. For urgent needs, call the studio directly.
                   </p>
                 </div>
               ) : (
@@ -66,6 +123,7 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        name="name"
                         required
                         className="w-full bg-bg-card border border-border rounded-sm px-4 py-3 text-text-primary text-sm focus:outline-none focus:border-accent transition-colors"
                         placeholder="Your name"
@@ -77,6 +135,7 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="email"
+                        name="email"
                         required
                         className="w-full bg-bg-card border border-border rounded-sm px-4 py-3 text-text-primary text-sm focus:outline-none focus:border-accent transition-colors"
                         placeholder="you@company.com"
@@ -90,6 +149,7 @@ export default function ContactPage() {
                     </label>
                     <input
                       type="text"
+                      name="company"
                       className="w-full bg-bg-card border border-border rounded-sm px-4 py-3 text-text-primary text-sm focus:outline-none focus:border-accent transition-colors"
                       placeholder="Your company or brand"
                     />
@@ -100,7 +160,10 @@ export default function ContactPage() {
                       <label className="block text-text-muted text-xs tracking-widest uppercase mb-2">
                         Project Type
                       </label>
-                      <select className="w-full bg-bg-card border border-border rounded-sm px-4 py-3 text-text-secondary text-sm focus:outline-none focus:border-accent transition-colors appearance-none cursor-pointer">
+                      <select
+                        name="projectType"
+                        className="w-full bg-bg-card border border-border rounded-sm px-4 py-3 text-text-secondary text-sm focus:outline-none focus:border-accent transition-colors appearance-none cursor-pointer"
+                      >
                         <option value="">Select a service</option>
                         {projectTypes.map((t) => (
                           <option key={t} value={t}>
@@ -113,7 +176,10 @@ export default function ContactPage() {
                       <label className="block text-text-muted text-xs tracking-widest uppercase mb-2">
                         Budget Range
                       </label>
-                      <select className="w-full bg-bg-card border border-border rounded-sm px-4 py-3 text-text-secondary text-sm focus:outline-none focus:border-accent transition-colors appearance-none cursor-pointer">
+                      <select
+                        name="budget"
+                        className="w-full bg-bg-card border border-border rounded-sm px-4 py-3 text-text-secondary text-sm focus:outline-none focus:border-accent transition-colors appearance-none cursor-pointer"
+                      >
                         <option value="">Select a range</option>
                         {budgetRanges.map((b) => (
                           <option key={b} value={b}>
@@ -129,6 +195,7 @@ export default function ContactPage() {
                       Message *
                     </label>
                     <textarea
+                      name="message"
                       required
                       rows={5}
                       className="w-full bg-bg-card border border-border rounded-sm px-4 py-3 text-text-primary text-sm focus:outline-none focus:border-accent transition-colors resize-none"
@@ -136,11 +203,16 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-red-400 text-sm">{error}</p>
+                  )}
+
                   <button
                     type="submit"
-                    className="px-8 py-3.5 bg-text-primary text-bg text-sm font-medium tracking-wide rounded-sm hover:bg-accent transition-colors duration-200"
+                    disabled={submitting}
+                    className="px-8 py-3.5 bg-text-primary text-bg text-sm font-medium tracking-wide rounded-sm hover:bg-accent transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {submitting ? "Sending..." : "Send Message"}
                   </button>
                 </form>
               )}

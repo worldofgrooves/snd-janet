@@ -7,6 +7,9 @@ export interface Project {
   services: string[];
   heroLabel: string;
   thumbnailLabel: string;
+  thumbnailImage?: string;
+  heroImage?: string;
+  galleryImages?: string[];
   challenge: string;
   approach: string;
   solution: string;
@@ -35,6 +38,7 @@ export const projects: Project[] = [
     services: ["Brand Identity", "Environmental Graphics", "Signage"],
     heroLabel: "Hero Image -- Matices exterior signage, full width",
     thumbnailLabel: "Project Thumbnail -- Matices brand mark",
+    thumbnailImage: "/images/project-matices-thumb.webp",
     challenge:
       "A new elevated dining concept in Truckee's historic district needed a brand identity that honored its cultural roots while signaling a refined, modern experience. Strict local sign codes added a layer of constraint to the environmental graphics.",
     approach:
@@ -58,6 +62,7 @@ export const projects: Project[] = [
     services: ["Brand Identity", "Environmental Graphics", "Web Design"],
     heroLabel: "Hero Image -- Summit House hotel lobby, full width",
     thumbnailLabel: "Project Thumbnail -- Summit House logo",
+    thumbnailImage: "/images/project-summit-house-thumb.png",
     challenge:
       "A boutique mountain hotel needed a brand identity that captured the warmth of alpine hospitality without falling into rustic cliches. The property's renovation demanded a cohesive visual language across digital, print, and physical space.",
     approach:
@@ -81,6 +86,7 @@ export const projects: Project[] = [
     services: ["Brand Identity", "Packaging Design", "Web Design"],
     heroLabel: "Hero Image -- Voxel Labs product packaging, full width",
     thumbnailLabel: "Project Thumbnail -- Voxel Labs mark",
+    thumbnailImage: "/images/project-voxel-labs-thumb.jpeg",
     challenge:
       "An emerging spatial computing startup needed a brand identity that projected credibility and innovation to enterprise clients while remaining approachable to developers and early adopters.",
     approach:
@@ -104,6 +110,7 @@ export const projects: Project[] = [
     services: ["Creative Direction", "Brand Identity", "Environmental Graphics"],
     heroLabel: "Hero Image -- Neon Social venue interior, full width",
     thumbnailLabel: "Project Thumbnail -- Neon Social wordmark",
+    thumbnailImage: "/images/project-neon-social-thumb.jpeg",
     challenge:
       "A new entertainment venue combining live music, craft cocktails, and immersive experiences needed creative direction that would establish it as a destination -- not just another nightlife spot.",
     approach:
@@ -127,6 +134,7 @@ export const projects: Project[] = [
     services: ["Brand Identity", "Packaging Design"],
     heroLabel: "Hero Image -- Terra Botanics product line, full width",
     thumbnailLabel: "Project Thumbnail -- Terra Botanics logo",
+    thumbnailImage: "/images/project-terra-botanics-thumb.png",
     challenge:
       "A premium plant-based skincare line needed packaging and brand identity that stood out in a saturated wellness market. The founder wanted to signal scientific rigor without losing the warmth and approachability that defined her brand ethos.",
     approach:
@@ -150,6 +158,7 @@ export const projects: Project[] = [
     services: ["Brand Identity", "Web Design", "Print + Digital Collateral"],
     heroLabel: "Hero Image -- Reed & Blackwell office, full width",
     thumbnailLabel: "Project Thumbnail -- Reed & Blackwell monogram",
+    thumbnailImage: "/images/project-reed-blackwell-thumb.png",
     challenge:
       "An established wealth management firm needed to modernize its brand without alienating its existing high-net-worth client base. The previous identity felt dated, and their digital presence didn't reflect the sophistication of their advisory practice.",
     approach:

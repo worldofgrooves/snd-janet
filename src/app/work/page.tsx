@@ -61,6 +61,7 @@ export default function WorkPage() {
                 <div className="bg-bg-card rounded-sm overflow-hidden border border-border hover:border-border-light transition-all duration-300">
                   <PlaceholderImage
                     label={project.thumbnailLabel}
+                    src={project.thumbnailImage}
                     aspectRatio="4/3"
                   />
                   <div className="p-5">

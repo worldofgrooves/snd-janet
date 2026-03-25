@@ -27,33 +27,81 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="min-h-[90vh] flex items-center px-6 md:px-12 py-20 md:py-32">
-        <div className="max-w-7xl mx-auto w-full">
-          <div className="max-w-3xl animate-fade-in-up">
-            <p className="text-accent text-sm tracking-widest uppercase mb-6">
-              Brand Identity & Creative Direction
-            </p>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.08] tracking-tight mb-6">
-              Brands built with
-              <br />
-              strategy and soul.
-            </h1>
-            <p className="text-text-secondary text-lg md:text-xl leading-relaxed max-w-xl mb-10">
-              Plume Creative is a boutique studio for brands that refuse to blend in. We combine 20 years of creative direction with a fine artist&apos;s instinct to build identities that work as hard as you do.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/work"
-                className="inline-block px-8 py-3.5 bg-text-primary text-bg text-sm font-medium tracking-wide rounded-sm hover:bg-accent transition-colors duration-200"
-              >
-                View Work
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-block px-8 py-3.5 border border-border text-text-primary text-sm font-medium tracking-wide rounded-sm hover:border-text-secondary transition-colors duration-200"
-              >
-                Start a Conversation
-              </Link>
+      <section className="min-h-[90vh] flex items-center px-6 md:px-12 py-20 md:py-32 relative overflow-hidden">
+        {/* Decorative plume motif */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[300px] md:w-[500px] lg:w-[600px] h-[600px] md:h-[800px] pointer-events-none select-none opacity-[0.06]">
+          <svg viewBox="0 0 400 800" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+            {/* Abstract feather / plume form */}
+            <path
+              d="M200 50 Q220 200 300 350 Q340 420 320 500 Q300 580 250 650 Q220 700 200 750"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              className="text-accent"
+              fill="none"
+            />
+            <path
+              d="M200 50 Q180 200 100 350 Q60 420 80 500 Q100 580 150 650 Q180 700 200 750"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              className="text-accent"
+              fill="none"
+            />
+            {/* Inner vein lines */}
+            <path d="M200 100 Q230 250 280 380" stroke="currentColor" strokeWidth="0.75" className="text-accent" fill="none" opacity="0.6" />
+            <path d="M200 100 Q170 250 120 380" stroke="currentColor" strokeWidth="0.75" className="text-accent" fill="none" opacity="0.6" />
+            <path d="M200 200 Q240 320 290 430" stroke="currentColor" strokeWidth="0.75" className="text-accent" fill="none" opacity="0.5" />
+            <path d="M200 200 Q160 320 110 430" stroke="currentColor" strokeWidth="0.75" className="text-accent" fill="none" opacity="0.5" />
+            <path d="M200 300 Q250 400 300 480" stroke="currentColor" strokeWidth="0.75" className="text-accent" fill="none" opacity="0.4" />
+            <path d="M200 300 Q150 400 100 480" stroke="currentColor" strokeWidth="0.75" className="text-accent" fill="none" opacity="0.4" />
+            {/* Central spine */}
+            <path d="M200 50 L200 750" stroke="currentColor" strokeWidth="1" className="text-accent" fill="none" opacity="0.3" />
+            {/* Subtle barb details */}
+            <path d="M200 150 Q245 220 270 300" stroke="currentColor" strokeWidth="0.5" className="text-accent" fill="none" opacity="0.3" />
+            <path d="M200 150 Q155 220 130 300" stroke="currentColor" strokeWidth="0.5" className="text-accent" fill="none" opacity="0.3" />
+            <path d="M200 400 Q260 450 310 490" stroke="currentColor" strokeWidth="0.5" className="text-accent" fill="none" opacity="0.3" />
+            <path d="M200 400 Q140 450 90 490" stroke="currentColor" strokeWidth="0.5" className="text-accent" fill="none" opacity="0.3" />
+            <path d="M200 500 Q250 550 280 600" stroke="currentColor" strokeWidth="0.5" className="text-accent" fill="none" opacity="0.25" />
+            <path d="M200 500 Q150 550 120 600" stroke="currentColor" strokeWidth="0.5" className="text-accent" fill="none" opacity="0.25" />
+          </svg>
+        </div>
+
+        <div className="max-w-7xl mx-auto w-full relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="animate-fade-in-up">
+              <p className="text-accent text-sm tracking-widest uppercase mb-6">
+                Brand Identity & Creative Direction
+              </p>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.08] tracking-tight mb-6">
+                Brands built with
+                <br />
+                strategy and soul.
+              </h1>
+              <p className="text-text-secondary text-lg md:text-xl leading-relaxed max-w-xl mb-10">
+                Plume Creative is a boutique studio for brands that refuse to blend in. We combine 20 years of creative direction with a fine artist&apos;s instinct to build identities that work as hard as you do.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link
+                  href="/work"
+                  className="inline-block px-8 py-3.5 bg-text-primary text-bg text-sm font-medium tracking-wide rounded-sm hover:bg-accent transition-colors duration-200"
+                >
+                  View Work
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-block px-8 py-3.5 border border-border text-text-primary text-sm font-medium tracking-wide rounded-sm hover:border-text-secondary transition-colors duration-200"
+                >
+                  Start a Conversation
+                </Link>
+              </div>
+            </div>
+            <div className="hidden md:block animate-fade-in-up animation-delay-200">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/home-hero-studio.jpeg"
+                alt="Plume Creative Studio"
+                className="w-full rounded-sm object-cover shadow-2xl"
+                style={{ aspectRatio: "3/2" }}
+              />
             </div>
           </div>
         </div>
@@ -84,6 +132,7 @@ export default function HomePage() {
                 <div className="bg-bg-card rounded-sm overflow-hidden border border-border hover:border-border-light transition-all duration-300">
                   <PlaceholderImage
                     label={project.thumbnailLabel}
+                    src={project.thumbnailImage}
                     aspectRatio="3/2"
                   />
                   <div className="p-6">
