@@ -4,9 +4,17 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Plume Creative -- Brand Identity & Creative Direction",
+  title: "Plume Creative | Brand Identity Studio for Hospitality & Experiential Brands",
   description:
-    "Strategic brand identity and creative direction for hospitality, entertainment, and lifestyle brands that refuse to blend in.",
+    "Boutique brand identity studio specializing in luxury hospitality, entertainment, and lifestyle brands. Strategy-first design from Reno, NV.",
+  openGraph: {
+    title: "Plume Creative | Brand Identity Studio for Hospitality & Experiential Brands",
+    description:
+      "Boutique brand identity studio specializing in luxury hospitality, entertainment, and lifestyle brands. Strategy-first design from Reno, NV.",
+    type: "website",
+    locale: "en_US",
+    siteName: "Plume Creative",
+  },
 };
 
 export default function RootLayout({
@@ -16,6 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-screen flex flex-col">
         <Navigation />
         <main className="flex-1 pt-16 md:pt-20">{children}</main>

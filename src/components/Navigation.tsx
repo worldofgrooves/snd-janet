@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
   { href: "/work", label: "Work" },
+  { href: "/services", label: "Services" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -15,13 +14,29 @@ const navItems = [
 export default function Navigation() {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        scrolled
+          ? "bg-bg/95 backdrop-blur-md border-b border-border shadow-sm"
+          : "bg-bg/80 backdrop-blur-sm"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="text-text-primary font-semibold tracking-tight text-lg">
+          <Link
+            href="/"
+            className="font-display text-text-primary font-bold tracking-tight text-lg"
+          >
             Plume Creative
           </Link>
 
@@ -32,7 +47,7 @@ export default function Navigation() {
                 key={item.href}
                 href={item.href}
                 className={`text-sm tracking-wide transition-colors duration-200 ${
-                  pathname === item.href
+                  pathname === item.href || pathname.startsWith(item.href + "/")
                     ? "text-text-primary"
                     : "text-text-secondary hover:text-text-primary"
                 }`}
@@ -40,6 +55,12 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              href="/start"
+              className="inline-block px-5 py-2.5 bg-accent text-white text-sm font-medium tracking-wide rounded-sm hover:bg-accent-hover transition-colors duration-200"
+            >
+              Start a Project
+            </Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -67,16 +88,16 @@ export default function Navigation() {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile full-screen overlay menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-border bg-bg/95 backdrop-blur-md">
-          <div className="px-6 py-6 flex flex-col gap-4">
+        <div className="md:hidden fixed inset-0 top-16 bg-bg/98 backdrop-blur-md z-40">
+          <div className="px-6 py-10 flex flex-col gap-6">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className={`text-base tracking-wide transition-colors ${
+                className={`text-2xl font-display tracking-wide transition-colors ${
                   pathname === item.href
                     ? "text-text-primary"
                     : "text-text-secondary"
@@ -85,6 +106,13 @@ export default function Navigation() {
                 {item.label}
               </Link>
             ))}
+            <Link
+              href="/start"
+              onClick={() => setMobileOpen(false)}
+              className="inline-block w-fit px-6 py-3 bg-accent text-white text-base font-medium tracking-wide rounded-sm mt-4"
+            >
+              Start a Project
+            </Link>
           </div>
         </div>
       )}

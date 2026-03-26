@@ -1,16 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
 
 const projectTypes = [
   "Brand Identity",
   "Creative Direction",
-  "Environmental Graphics",
-  "Packaging Design",
-  "Web Design",
-  "Print + Digital Collateral",
+  "Design Systems",
   "Multiple Services",
   "Not Sure Yet",
 ];
@@ -36,7 +34,6 @@ export default function ContactPage() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // If Formspree is configured, submit via API
     if (FORMSPREE_ID) {
       setSubmitting(true);
       try {
@@ -58,7 +55,7 @@ export default function ContactPage() {
       return;
     }
 
-    // Fallback: construct mailto link
+    // Fallback: mailto
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const company = formData.get("company") as string;
@@ -89,17 +86,17 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="px-6 md:px-12 py-20 md:py-32">
+      <section className="px-6 md:px-12 py-16 md:py-28">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-[1fr_400px] gap-12 md:gap-20">
             {/* Form */}
             <div className="animate-fade-in-up">
-              <p className="text-accent text-xs tracking-widest uppercase mb-4">Contact</p>
-              <h1 className="text-4xl md:text-5xl font-semibold leading-tight tracking-tight mb-4">
+              <h1 className="font-display text-4xl md:text-5xl leading-tight tracking-tight mb-3">
                 Start a conversation.
               </h1>
               <p className="text-text-secondary text-lg leading-relaxed mb-10 max-w-lg">
-                Tell us about your brand and what you&apos;re looking to build. We&apos;ll get back to you within one business day.
+                Tell us about your brand and what you&apos;re looking to build.
+                We&apos;ll get back to you within one business day.
               </p>
 
               {submitted ? (
@@ -111,7 +108,8 @@ export default function ContactPage() {
                     We&apos;ve received your message.
                   </p>
                   <p className="text-text-secondary text-sm">
-                    We&apos;ll be in touch within one business day. For urgent needs, call the studio directly.
+                    We&apos;ll be in touch within one business day. For urgent
+                    needs, call the studio directly.
                   </p>
                 </div>
               ) : (
@@ -203,19 +201,30 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  {error && (
-                    <p className="text-red-400 text-sm">{error}</p>
-                  )}
+                  {error && <p className="text-red-600 text-sm">{error}</p>}
 
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="px-8 py-3.5 bg-text-primary text-bg text-sm font-medium tracking-wide rounded-sm hover:bg-accent transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-8 py-3.5 bg-accent text-white text-sm font-medium tracking-wide rounded-sm hover:bg-accent-hover transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {submitting ? "Sending..." : "Send Message"}
                   </button>
                 </form>
               )}
+
+              {/* Full intake CTA */}
+              <div className="mt-10 pt-8 border-t border-border">
+                <p className="text-text-secondary text-sm mb-2">
+                  Know what you need?
+                </p>
+                <Link
+                  href="/start"
+                  className="text-accent text-sm hover:text-accent-hover transition-colors"
+                >
+                  Start with our detailed project brief &rarr;
+                </Link>
+              </div>
             </div>
 
             {/* Sidebar */}
@@ -251,7 +260,8 @@ export default function ContactPage() {
                     Response Time
                   </h3>
                   <p className="text-text-secondary text-sm leading-relaxed">
-                    We respond to all inquiries within one business day. For urgent project needs, call the studio directly.
+                    We respond to all inquiries within one business day. For
+                    urgent project needs, call the studio directly.
                   </p>
                 </div>
               </div>

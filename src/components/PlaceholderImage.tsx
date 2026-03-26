@@ -18,14 +18,14 @@ export default function PlaceholderImage({
   if (src) {
     return (
       <div
-        className={`relative overflow-hidden rounded-sm ${className}`}
+        className={`relative overflow-hidden ${className}`}
         style={{ aspectRatio }}
       >
         <Image
           src={src}
           alt={alt || label}
           fill
-          className="object-cover"
+          className="object-cover project-card-image"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
@@ -34,7 +34,7 @@ export default function PlaceholderImage({
 
   return (
     <div
-      className={`placeholder-image rounded-sm ${className}`}
+      className={`placeholder-image ${className}`}
       style={{ aspectRatio }}
     >
       <span className="text-center px-4">{label}</span>

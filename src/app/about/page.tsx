@@ -1,5 +1,11 @@
-import SectionCTA from "@/components/SectionCTA";
+import type { Metadata } from "next";
 import PlaceholderImage from "@/components/PlaceholderImage";
+
+export const metadata: Metadata = {
+  title: "About | Plume Creative -- Boutique Brand Studio, Reno NV",
+  description:
+    "Founded by Denver Miller, Plume Creative is a boutique brand identity studio in Reno, NV. 20 years of experience in hospitality, entertainment, and experiential brand design.",
+};
 
 const beliefs = [
   {
@@ -22,7 +28,7 @@ const beliefs = [
 
 const credentials = [
   "20 years in design and creative direction",
-  "Extensive luxury hospitality portfolio -- resorts, casinos, restaurants, entertainment venues",
+  "Brand systems for hospitality, tech, entertainment, consumer, and professional services",
   "2025 Burning Man Honoraria Grant recipient (large-scale installation)",
   "Wynn Las Vegas feature gallery artist",
   "Fabrication and production expertise (CNC, laser, 3D printing, metalwork)",
@@ -33,16 +39,18 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="px-6 md:px-12 py-20 md:py-32">
+      <section className="px-6 md:px-12 py-16 md:py-28">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             <div className="animate-fade-in-up">
-              <p className="text-accent text-xs tracking-widest uppercase mb-4">About</p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight mb-6">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight mb-5">
                 Strategic design with an artist&apos;s instinct.
               </h1>
               <p className="text-text-secondary text-lg leading-relaxed">
-                Plume Creative is the studio of Denver Miller -- creative director, fine artist, and the person who still believes brand identity is one of the most powerful tools a business can invest in.
+                Plume Creative is the studio of Denver Miller -- creative
+                director, fine artist, and the person who still believes brand
+                identity is one of the most powerful tools a business can invest
+                in.
               </p>
             </div>
             <div className="animate-fade-in-up animation-delay-200">
@@ -56,54 +64,101 @@ export default function AboutPage() {
       </section>
 
       {/* The Studio */}
-      <section className="px-6 md:px-12 py-16 md:py-24 bg-bg-elevated">
+      <section className="px-6 md:px-12 py-14 md:py-20 bg-bg-elevated">
         <div className="max-w-3xl mx-auto animate-fade-in-up">
-          <h2 className="text-accent text-xs tracking-widest uppercase mb-6">The Studio</h2>
+          <h2 className="text-accent text-xs tracking-widest uppercase mb-6">
+            The Studio
+          </h2>
           <div className="space-y-5 text-text-secondary text-lg leading-relaxed">
             <p>
-              Plume Creative exists because too many brands in hospitality, entertainment, and lifestyle settle for design that looks fine but doesn&apos;t do anything.
+              Plume Creative exists because too many companies settle for design
+              that looks fine but doesn&apos;t do anything.
+            </p>
+            <p>Fine isn&apos;t the standard here.</p>
+            <p>
+              We&apos;re a boutique studio built on a simple conviction: the best
+              brand work happens when strategic thinking and genuine creative
+              craft operate together. Not strategy on one side and a mood board
+              on the other -- but one unified process where every visual decision
+              has a reason behind it and every strategic insight finds its way
+              into the design.
             </p>
             <p>
-              Fine isn&apos;t the standard here.
-            </p>
-            <p>
-              We&apos;re a boutique studio built on a simple conviction: the best brand work happens when strategic thinking and genuine creative craft operate together. Not strategy on one side and a mood board on the other -- but one unified process where every visual decision has a reason behind it and every strategic insight finds its way into the design.
-            </p>
-            <p>
-              We work primarily with restaurants, hotels, bars, venues, resorts, and lifestyle brands. The kinds of businesses where the guest experience matters, where the physical space is part of the story, and where getting the brand right isn&apos;t cosmetic -- it&apos;s commercial.
+              We work with companies where brand quality is a competitive
+              advantage -- hospitality groups, tech companies, consumer brands,
+              professional services firms, entertainment venues, and lifestyle
+              businesses. The common thread isn&apos;t industry. It&apos;s
+              ambition. Our clients see brand identity as a serious business
+              investment, not a line item to minimize.
             </p>
           </div>
         </div>
       </section>
 
       {/* The Creative Director */}
-      <section className="px-6 md:px-12 py-16 md:py-24">
+      <section className="px-6 md:px-12 py-14 md:py-20">
         <div className="max-w-3xl mx-auto animate-fade-in-up">
-          <h2 className="text-accent text-xs tracking-widest uppercase mb-6">The Creative Director</h2>
+          <h2 className="text-accent text-xs tracking-widest uppercase mb-6">
+            The Creative Director
+          </h2>
           <div className="space-y-5 text-text-secondary text-lg leading-relaxed">
             <p>
-              Denver Miller brings 20 years of creative direction across luxury hospitality, entertainment, and lifestyle brands -- from Las Vegas resorts and casinos to independent restaurants redefining their markets.
+              Denver Miller brings 20 years of creative direction across
+              industries where brand quality is non-negotiable -- luxury
+              hospitality, tech, entertainment, consumer goods, and professional
+              services, from Las Vegas resorts to high-growth startups redefining
+              their categories.
             </p>
             <p>
-              But what makes his work different isn&apos;t just the experience. It&apos;s the perspective.
+              But what makes his work different isn&apos;t just the experience.
+              It&apos;s the perspective.
             </p>
             <p>
-              Denver is also a practicing fine artist. His large-scale sculptures and mixed-media work have been featured at Wynn Las Vegas, shown in solo exhibitions, and recognized with a 2025 Burning Man Honoraria Grant for a monumental installation on the playa.
+              Denver is also a practicing fine artist. His large-scale sculptures
+              and mixed-media work have been featured at Wynn Las Vegas, shown in
+              solo exhibitions, and recognized with a 2025 Burning Man Honoraria
+              Grant for a monumental installation on the playa.
             </p>
             <p>
-              That dual lens -- commercial strategy and artistic sensibility -- runs through everything Plume Creative produces. It means the work isn&apos;t just on-brand and on-strategy. It has a quality that&apos;s harder to name but impossible to miss: taste, restraint, and the confidence to let a strong idea breathe.
+              That dual lens -- commercial strategy and artistic sensibility --
+              runs through everything Plume Creative produces. It means the work
+              isn&apos;t just on-brand and on-strategy. It has a quality
+              that&apos;s harder to name but impossible to miss: taste, restraint,
+              and the confidence to let a strong idea breathe.
             </p>
             <p>
-              His fabrication background (CNC routing, laser cutting, 3D printing, metalwork) also means he understands materiality in a way most designers don&apos;t. When we design signage, environmental graphics, or packaging, we&apos;re thinking about how it gets made -- not just how it looks on screen.
+              His fabrication background (CNC routing, laser cutting, 3D
+              printing, metalwork) also means he understands materiality in a way
+              most designers don&apos;t. When we design signage, environmental
+              graphics, or packaging, we&apos;re thinking about how it gets made
+              -- not just how it looks on screen.
             </p>
           </div>
         </div>
       </section>
 
+      {/* Creative Network */}
+      <section className="px-6 md:px-12 py-14 md:py-20 bg-bg-elevated">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+            Small by design. Big when it counts.
+          </h2>
+          <p className="text-text-secondary text-lg leading-relaxed">
+            Plume operates as a curated creative network -- a core studio
+            supported by specialist strategists, copywriters, photographers,
+            developers, and fabricators brought in per-project. You get the
+            focus of a founder-led studio with the capability of a full team
+            when the project demands it.
+          </p>
+        </div>
+      </section>
+
       {/* What We Believe */}
-      <section className="px-6 md:px-12 py-16 md:py-24 bg-bg-elevated">
+      <section className="px-6 md:px-12 py-14 md:py-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-accent text-xs tracking-widest uppercase mb-10">What We Believe</h2>
+          <h2 className="text-accent text-xs tracking-widest uppercase mb-10">
+            What We Believe
+          </h2>
           <div className="grid sm:grid-cols-2 gap-6">
             {beliefs.map((belief) => (
               <div
@@ -123,9 +178,11 @@ export default function AboutPage() {
       </section>
 
       {/* Credentials */}
-      <section className="px-6 md:px-12 py-16 md:py-24">
+      <section className="px-6 md:px-12 py-14 md:py-20 bg-bg-elevated">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-accent text-xs tracking-widest uppercase mb-8">Credentials</h2>
+          <h2 className="text-accent text-xs tracking-widest uppercase mb-8">
+            Credentials
+          </h2>
           <div className="space-y-4">
             {credentials.map((c) => (
               <div
@@ -140,12 +197,17 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <SectionCTA
-        headline="Let's build something that lasts."
-        body="If your brand needs more than a refresh -- if it needs real strategic creative direction -- we should talk. We take on a limited number of engagements per year, and the best projects start with a conversation."
-        buttonText="Get in Touch"
-      />
+      {/* GEO content */}
+      <div className="sr-only" aria-hidden="false">
+        <p>
+          Denver Miller III is the founder and creative director of Plume
+          Creative, a boutique brand identity studio based in Reno, Nevada. With
+          20 years of experience in design, sculpture, and creative direction, he
+          specializes in brand identity for hospitality and experiential brands,
+          serving clients across Reno, Lake Tahoe, Las Vegas, and the Western
+          United States.
+        </p>
+      </div>
     </>
   );
 }

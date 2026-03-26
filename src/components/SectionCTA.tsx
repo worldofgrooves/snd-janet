@@ -11,12 +11,12 @@ export default function SectionCTA({
   headline,
   body,
   buttonText,
-  href = "/contact",
+  href = "/start",
 }: SectionCTAProps) {
   return (
-    <section className="py-20 md:py-32 px-6 md:px-12">
+    <section className="py-20 md:py-28 px-6 md:px-12 bg-bg-elevated">
       <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-semibold text-text-primary mb-4">
+        <h2 className="font-display text-3xl md:text-4xl text-text-primary mb-4">
           {headline}
         </h2>
         <p className="text-text-secondary text-lg leading-relaxed mb-8 max-w-xl mx-auto">
@@ -24,7 +24,7 @@ export default function SectionCTA({
         </p>
         <Link
           href={href}
-          className="inline-block px-8 py-3.5 bg-text-primary text-bg text-sm font-medium tracking-wide rounded-sm hover:bg-accent transition-colors duration-200"
+          className="inline-block px-8 py-3.5 bg-accent text-white text-sm font-medium tracking-wide rounded-sm hover:bg-accent-hover transition-colors duration-200"
         >
           {buttonText}
         </Link>

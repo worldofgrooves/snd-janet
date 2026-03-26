@@ -1,96 +1,76 @@
-import SectionCTA from "@/components/SectionCTA";
+import type { Metadata } from "next";
 
-const services = [
+export const metadata: Metadata = {
+  title: "Services | Plume Creative -- Brand Identity, Creative Direction & Design",
+  description:
+    "Strategy-first brand identity, creative direction, and design systems for hospitality and experiential brands. See how Plume Creative works.",
+};
+
+const servicePillars = [
   {
-    title: "Brand Identity Systems",
-    tagline: "Brands that work as hard as you do.",
-    body: "Your brand isn't a logo. It's the strategic foundation everything else is built on -- your guest experience, your signage, your menus, your reputation. We build identity systems grounded in strategy and designed to scale across every touchpoint your audience encounters.",
-    deliverables: [
+    title: "Brand Identity",
+    outcome: "Define who you are.",
+    body: "Your brand isn't a logo. It's the strategic foundation everything else is built on -- your customer experience, your environment, your product, your reputation. We build identity systems grounded in strategy and designed to scale across every touchpoint your audience encounters.",
+    includes: [
       "Brand strategy and positioning",
       "Visual identity development",
       "Logo and mark systems",
       "Typography, color, and design language",
       "Brand guidelines and toolkit",
+      "Brand voice and narrative",
     ],
   },
   {
     title: "Creative Direction",
-    tagline: "The creative leadership your project deserves.",
+    outcome: "Direct how you show up.",
     body: "Great brands don't happen by committee. They happen when someone with taste, experience, and strategic clarity takes the reins. We provide creative direction that keeps every element -- from photography to packaging to physical space -- telling one cohesive story.",
-    deliverables: [
+    includes: [
       "Art direction and visual strategy",
       "Photography direction",
       "Campaign concepting",
+      "Brand voice and narrative development",
       "Cross-touchpoint creative alignment",
     ],
   },
   {
-    title: "Environmental Graphics + Signage",
-    tagline: "Your space should speak before anyone says a word.",
-    body: "The physical environment is your brand's most immersive expression. We design signage, environmental graphics, and spatial brand elements that transform venues into experiences -- informed by fabrication knowledge and a deep understanding of how people move through space.",
-    deliverables: [
-      "Signage systems and wayfinding",
-      "Environmental graphic design",
-      "Fabrication-ready production files",
-      "Vendor coordination and material specification",
-    ],
-  },
-  {
-    title: "Packaging Design",
-    tagline: "Packaging that earns its place on the shelf and in the hand.",
-    body: "In a crowded market, your packaging is your first and sometimes only pitch. We create packaging systems that communicate quality, tell your story, and give people a reason to reach for yours instead of the one next to it.",
-    deliverables: [
-      "Packaging concept and structure",
-      "Label and surface design",
-      "Production-ready artwork",
-      "Material and finish specification",
-    ],
-  },
-  {
-    title: "Web Design",
-    tagline: "A digital presence that matches what you've built in person.",
-    body: "Your website is the front door most people walk through first. We design clean, intentional web experiences on Webflow -- built to reflect the quality of your brand and convert the visitors who matter.",
-    deliverables: [
-      "Website strategy and structure",
-      "Visual design and UX",
-      "Webflow development",
-      "Responsive, performance-optimized builds",
-    ],
-  },
-  {
-    title: "Print + Digital Collateral",
-    tagline: "Every touchpoint is a brand moment. We treat it like one.",
-    body: "Menus, business cards, social templates, investor decks, event collateral -- these aren't afterthoughts. They're opportunities to reinforce who you are. We design collateral systems that stay consistent and look sharp across every format.",
-    deliverables: [
-      "Menu and in-venue print design",
-      "Business collateral",
-      "Social media templates and digital assets",
-      "Presentation and pitch design",
+    title: "Design Systems",
+    outcome: "Build what people see.",
+    body: "From signage to packaging to digital -- the tangible expressions of your brand need to work as a cohesive system, not a collection of one-offs. We design systems that maintain integrity across every format and substrate, informed by fabrication knowledge and production realities.",
+    includes: [
+      "Environmental graphics and signage",
+      "Packaging design and production files",
+      "Print and digital collateral",
+      "Web design",
       "Motion graphics",
+      "Vendor coordination and material specification",
     ],
   },
 ];
 
-const phases = [
+const process = [
   {
     number: "01",
-    title: "Discovery",
-    body: "We learn your business, your market, your goals, and your audience. This is the foundation. Skip it and everything downstream suffers.",
+    name: "The Perspective",
+    plumeName: "Perspective",
+    body: "We step back and see your brand from above. Research, audit, interviews, competitive landscape. The bird's-eye view that reveals what everyone else misses.",
   },
   {
     number: "02",
-    title: "Visual Exploration",
-    body: "Armed with strategy, we develop distinct creative directions -- not variations of one idea, but genuinely different approaches with clear rationale behind each.",
+    name: "The Alchemy",
+    plumeName: "Alchemy",
+    body: "We transform insights into creative territories. Stylescapes, concepts, strategic directions. Raw material becomes vision -- not variations of one idea, but genuinely different approaches.",
   },
   {
     number: "03",
-    title: "Refinement",
-    body: "We hone the chosen direction into a complete, production-ready brand system. Every detail is intentional.",
+    name: "The Craft",
+    plumeName: "Craft",
+    body: "We refine the chosen direction into a complete brand system. Every detail intentional, every choice defensible. This is where strategic thinking becomes tangible design.",
   },
   {
     number: "04",
-    title: "Delivery + Toolkit",
-    body: "You receive a comprehensive brand toolkit -- files, guidelines, and the knowledge to deploy your brand consistently without us in the room.",
+    name: "The Reveal",
+    plumeName: "Reveal",
+    body: "We deliver your complete brand toolkit and guide your team on implementation. Files, guidelines, and the knowledge to deploy your brand consistently. Your brand takes flight.",
   },
 ];
 
@@ -98,39 +78,42 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="px-6 md:px-12 py-20 md:py-32">
+      <section className="px-6 md:px-12 py-16 md:py-28">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl animate-fade-in-up">
-            <p className="text-accent text-xs tracking-widest uppercase mb-4">Services</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight mb-6">
-              Your brand is your most valuable asset. We make sure it performs like one.
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight mb-5">
+              Your brand is your most valuable asset. We make sure it performs
+              like one.
             </h1>
             <p className="text-text-secondary text-lg leading-relaxed max-w-xl">
-              Plume Creative is a brand identity and creative direction studio for hospitality, entertainment, and lifestyle brands that refuse to blend in.
+              Plume Creative is a brand identity and creative direction studio
+              for ambitious companies that refuse to blend in -- from hospitality
+              and entertainment to tech, professional services, and consumer
+              brands.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Service Blocks */}
-      <section className="px-6 md:px-12 pb-20 md:pb-28">
+      {/* Three Service Pillars */}
+      <section className="px-6 md:px-12 pb-16 md:pb-24">
         <div className="max-w-7xl mx-auto">
           <div className="grid gap-6">
-            {services.map((service, i) => (
+            {servicePillars.map((pillar, i) => (
               <div
-                key={service.title}
-                className={`bg-bg-card border border-border rounded-sm p-8 md:p-10 hover:border-border-light transition-all duration-300 animate-fade-in-up animation-delay-${(i + 1) * 100}`}
+                key={pillar.title}
+                className={`bg-bg-card border border-border rounded-sm p-8 md:p-10 animate-fade-in-up animation-delay-${(i + 1) * 100}`}
               >
                 <div className="grid md:grid-cols-[1fr_300px] gap-6 md:gap-10">
                   <div>
-                    <h3 className="text-sm text-accent tracking-widest uppercase mb-3">
-                      {service.title}
+                    <h3 className="text-accent text-xs tracking-widest uppercase mb-3">
+                      {pillar.title}
                     </h3>
-                    <p className="text-xl md:text-2xl font-medium text-text-primary mb-4">
-                      {service.tagline}
+                    <p className="font-display text-2xl md:text-3xl text-text-primary mb-4">
+                      {pillar.outcome}
                     </p>
                     <p className="text-text-secondary leading-relaxed">
-                      {service.body}
+                      {pillar.body}
                     </p>
                   </div>
                   <div className="md:border-l md:border-border md:pl-8">
@@ -138,13 +121,15 @@ export default function ServicesPage() {
                       What this includes
                     </p>
                     <ul className="space-y-2">
-                      {service.deliverables.map((d) => (
+                      {pillar.includes.map((item) => (
                         <li
-                          key={d}
+                          key={item}
                           className="text-text-secondary text-sm flex items-start gap-2"
                         >
-                          <span className="text-accent mt-1.5 text-[6px]">&#9679;</span>
-                          {d}
+                          <span className="text-accent mt-1.5 text-[6px]">
+                            &#9679;
+                          </span>
+                          {item}
                         </li>
                       ))}
                     </ul>
@@ -156,24 +141,32 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Process */}
-      <section className="px-6 md:px-12 py-20 md:py-28 bg-bg-elevated">
+      {/* The Plume Process */}
+      <section className="px-6 md:px-12 py-16 md:py-24 bg-bg-elevated">
         <div className="max-w-7xl mx-auto">
-          <div className="max-w-2xl mb-14">
-            <p className="text-accent text-xs tracking-widest uppercase mb-3">Process</p>
-            <h2 className="text-3xl md:text-4xl font-semibold mb-4">How we work.</h2>
+          <div className="max-w-2xl mb-12">
+            <p className="text-accent text-xs tracking-widest uppercase mb-3">
+              The Plume Process
+            </p>
+            <h2 className="font-display text-3xl md:text-4xl mb-4">
+              How we work.
+            </h2>
             <p className="text-text-secondary leading-relaxed">
-              Every engagement follows a strategic sequence. We don&apos;t start designing until we understand what the design needs to accomplish.
+              Every engagement follows a strategic sequence. We don&apos;t start
+              designing until we understand what the design needs to accomplish.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {phases.map((phase) => (
-              <div key={phase.number} className="p-6 bg-bg-card border border-border rounded-sm">
+            {process.map((phase) => (
+              <div
+                key={phase.number}
+                className="p-6 bg-bg-card border border-border rounded-sm"
+              >
                 <span className="text-accent text-xs tracking-widest font-medium">
-                  Phase {phase.number}
+                  {phase.number}
                 </span>
-                <h3 className="text-lg font-medium text-text-primary mt-2 mb-3">
-                  {phase.title}
+                <h3 className="font-display text-lg text-text-primary mt-2 mb-3">
+                  {phase.name}
                 </h3>
                 <p className="text-text-secondary text-sm leading-relaxed">
                   {phase.body}
@@ -184,12 +177,32 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <SectionCTA
-        headline="Ready to elevate?"
-        body="We take on a limited number of projects each year to ensure every client gets our full attention. If you're building something worth branding properly, let's talk."
-        buttonText="Start a Conversation"
-      />
+      {/* Who This Is For */}
+      <section className="px-6 md:px-12 py-16 md:py-20">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-text-muted text-xs tracking-widest uppercase mb-4">
+            Ideal Clients
+          </p>
+          <p className="font-display text-xl md:text-2xl text-text-primary leading-relaxed">
+            We work best with business owners and marketing leaders who see brand
+            as an investment, not an expense. If you&apos;re building something
+            worth branding properly, we should talk.
+          </p>
+        </div>
+      </section>
+
+      {/* GEO content */}
+      <div className="sr-only" aria-hidden="false">
+        <p>
+          Plume Creative offers brand identity design, creative direction, and
+          design systems for hospitality, entertainment, and experiential brands.
+          Brand identity design is the process of defining a brand&apos;s visual
+          and strategic foundation -- logo, color, typography, voice, and
+          guidelines -- so every touchpoint communicates a consistent, intentional
+          message. Plume Creative is based in Reno, Nevada, serving clients
+          nationwide.
+        </p>
+      </div>
     </>
   );
 }
