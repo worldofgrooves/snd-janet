@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PlumeIcon from "@/components/PlumeIcon";
 
 export default function Footer() {
   return (
@@ -7,9 +8,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16">
           {/* Brand */}
           <div>
-            <h3 className="font-display text-text-primary font-bold text-lg mb-3">
-              Plume Creative
-            </h3>
+            <div className="flex items-center gap-2.5 mb-3">
+              <PlumeIcon className="h-6 w-6 text-accent flex-shrink-0" />
+              <h3 className="font-display text-text-primary font-bold text-lg">
+                Plume Creative
+              </h3>
+            </div>
             <p className="text-text-secondary text-sm leading-relaxed max-w-xs">
               Strategic brand identity and creative direction for brands that
               take themselves seriously.
