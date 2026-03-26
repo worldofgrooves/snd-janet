@@ -22,6 +22,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html.has-scroll-pinned {
+  scroll-behavior: auto;
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text-primary);
@@ -35,7 +39,54 @@ body {
   font-family: var(--font-display);
 }
 
-/* Scroll-triggered fade-in animation */
+/* ============================================
+   DISPLAY TYPE SCALE (fluid via clamp)
+   ============================================ */
+
+.text-display-hero {
+  font-size: clamp(3rem, 2rem + 5vw, 7.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.text-display-section {
+  font-size: clamp(2.25rem, 1.5rem + 3.5vw, 5rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.text-display-statement {
+  font-size: clamp(1.75rem, 1rem + 2.5vw, 3.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================
+   FULL-BLEED IMAGE HELPERS
+   ============================================ */
+
+/* Strip card containers -- no border, no shadow, no bg */
+.image-bleed {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* Gradient overlay for text on images */
+.gradient-overlay-bottom {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.35) 50%,
+    transparent 100%
+  );
+}
+
+/* ============================================
+   LEGACY ANIMATIONS (kept for fallback)
+   ============================================ */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -59,7 +110,10 @@ body {
 .animation-delay-500 { animation-delay: 0.5s; }
 .animation-delay-600 { animation-delay: 0.6s; }
 
-/* Placeholder image boxes (warm palette) */
+/* ============================================
+   PLACEHOLDER IMAGES
+   ============================================ */
+
 .placeholder-image {
   background: linear-gradient(135deg, #EDEAE5 0%, #D9D4CE 50%, #EDEAE5 100%);
   display: flex;
@@ -71,17 +125,20 @@ body {
   text-transform: uppercase;
 }
 
-/* Project card hover */
+/* Image hover -- for real images (faster, premium easing) */
 .project-card-image {
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1), filter 0.4s ease;
 }
 
 .group:hover .project-card-image {
-  transform: scale(1.02);
-  filter: brightness(0.92);
+  transform: scale(1.04);
+  filter: brightness(0.88);
 }
 
-/* Custom scrollbar (warm palette) */
+/* ============================================
+   SCROLLBAR (warm palette)
+   ============================================ */
+
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -100,4 +157,17 @@ body {
 ::selection {
   background-color: #B8926A33;
   color: var(--color-text-primary);
+}
+
+/* ============================================
+   ACCESSIBILITY: REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

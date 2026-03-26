@@ -3,6 +3,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import SectionCTA from "@/components/SectionCTA";
+import { ClipReveal } from "@/components/motion/ClipReveal";
+import { ImageReveal } from "@/components/motion/ImageReveal";
+import { StaggerContainer, StaggerChild } from "@/components/motion/StaggerContainer";
 import { caseStudies } from "@/data/projects";
 
 export function generateStaticParams() {
@@ -49,138 +52,152 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
   return (
     <>
-      {/* Hero Image */}
-      <section>
-        <PlaceholderImage
-          label={`${project.title} -- Hero`}
-          src={project.heroImage}
-          alt={`${project.title} brand identity hero image`}
-          aspectRatio="21/9"
-          className="w-full"
-        />
-      </section>
-
-      {/* Project Header */}
-      <section className="px-6 md:px-12 py-10 md:py-14">
-        <div className="max-w-4xl mx-auto">
-          <div className="animate-fade-in-up">
-            <h1 className="font-display text-4xl md:text-5xl tracking-tight mb-2">
+      {/* ── Full-Bleed Hero Image ── */}
+      <section className="relative overflow-hidden" style={{ height: "70vh" }}>
+        <div className="absolute inset-0">
+          <ImageReveal delay={0}>
+            <PlaceholderImage
+              label={`${project.title} -- Hero`}
+              src={project.heroImage}
+              alt={`${project.title} brand identity hero image`}
+              aspectRatio="21/9"
+              className="w-full"
+            />
+          </ImageReveal>
+        </div>
+        {/* Gradient overlay */}
+        <div className="absolute inset-0 gradient-overlay-bottom pointer-events-none" />
+        {/* Title over image */}
+        <div className="absolute bottom-0 left-0 right-0 px-6 md:px-12 pb-10 md:pb-14">
+          <ClipReveal delay={0.3}>
+            <h1 className="font-display text-4xl md:text-6xl text-white tracking-tight mb-3">
               {project.title}
             </h1>
-            <p className="text-text-secondary text-lg italic mb-6">
-              {project.tagline}
-            </p>
-            <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-text-secondary">
-              <div>
-                <span className="text-text-muted text-xs tracking-widest uppercase">
-                  Client
-                </span>
-                <p className="mt-1">{project.client}</p>
-              </div>
-              <div>
-                <span className="text-text-muted text-xs tracking-widest uppercase">
-                  Industry
-                </span>
-                <p className="mt-1">{project.industryTag}</p>
-              </div>
-              <div>
-                <span className="text-text-muted text-xs tracking-widest uppercase">
-                  Year
-                </span>
-                <p className="mt-1">{project.year}</p>
-              </div>
-              <div>
-                <span className="text-text-muted text-xs tracking-widest uppercase">
-                  Services
-                </span>
-                <p className="mt-1">{project.services.join(", ")}</p>
-              </div>
-            </div>
-          </div>
+            <p className="text-white/70 text-lg italic">{project.tagline}</p>
+          </ClipReveal>
         </div>
       </section>
 
-      {/* Art of Transformation Narrative Sections */}
+      {/* ── Project Metadata ── */}
+      <section className="px-6 md:px-12 py-10 md:py-14">
+        <div className="max-w-4xl mx-auto">
+          <StaggerContainer
+            className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-text-secondary"
+            staggerDelay={0.08}
+          >
+            {[
+              { label: "Client", value: project.client },
+              { label: "Industry", value: project.industryTag },
+              { label: "Year", value: String(project.year) },
+              { label: "Services", value: project.services.join(", ") },
+            ].map(({ label, value }) => (
+              <StaggerChild key={label}>
+                <div>
+                  <span className="text-text-muted text-xs tracking-widest uppercase block mb-1">
+                    {label}
+                  </span>
+                  <p>{value}</p>
+                </div>
+              </StaggerChild>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* ── Art of Transformation Narrative Sections ── */}
       <section className="px-6 md:px-12 pb-14 md:pb-20">
         <div className="max-w-4xl mx-auto space-y-14">
           {sections.map((section, i) => (
             <div key={section.label}>
-              {/* Insert gallery images between narrative sections */}
+              {/* Gallery images between narrative sections */}
               {i === 2 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-14">
-                  <PlaceholderImage
-                    label={`${project.title} -- Detail 1`}
-                    src={project.galleryImages?.[0]}
-                    alt={`${project.title} design detail`}
-                    aspectRatio="4/3"
-                  />
-                  <PlaceholderImage
-                    label={`${project.title} -- Detail 2`}
-                    src={project.galleryImages?.[1]}
-                    alt={`${project.title} design detail`}
-                    aspectRatio="4/3"
-                  />
+                  <ImageReveal delay={0}>
+                    <PlaceholderImage
+                      label={`${project.title} -- Detail 1`}
+                      src={project.galleryImages?.[0]}
+                      alt={`${project.title} design detail`}
+                      aspectRatio="4/3"
+                    />
+                  </ImageReveal>
+                  <ImageReveal delay={0.15}>
+                    <PlaceholderImage
+                      label={`${project.title} -- Detail 2`}
+                      src={project.galleryImages?.[1]}
+                      alt={`${project.title} design detail`}
+                      aspectRatio="4/3"
+                    />
+                  </ImageReveal>
                 </div>
               )}
               {i === 4 && (
-                <div className="mb-14">
+                <ImageReveal delay={0} className="mb-14">
                   <PlaceholderImage
                     label={`${project.title} -- Full Width`}
                     src={project.galleryImages?.[2]}
                     alt={`${project.title} full showcase`}
                     aspectRatio="16/9"
                   />
-                </div>
+                </ImageReveal>
               )}
 
-              <div className="animate-fade-in-up">
+              {/* Section heading + body */}
+              <ClipReveal direction={i % 2 === 0 ? "left" : "up"} duration={0.7}>
                 <h2 className="text-accent text-xs tracking-widest uppercase mb-4">
                   {section.label}
                 </h2>
+              </ClipReveal>
+              <ClipReveal delay={0.15} duration={0.7}>
                 <p className="text-text-secondary text-lg leading-relaxed">
                   {section.content}
                 </p>
-              </div>
+              </ClipReveal>
             </div>
           ))}
 
           {/* Gallery Row */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {Array.from({ length: 3 }).map((_, i) => (
-              <PlaceholderImage
-                key={`gallery-row-${i}`}
-                label={`${project.title} -- Gallery ${i + 1}`}
-                src={project.galleryImages?.[i + 3]}
-                alt={`${project.title} gallery image`}
-                aspectRatio="3/4"
-              />
+              <ImageReveal key={`gallery-row-${i}`} delay={i * 0.15}>
+                <PlaceholderImage
+                  label={`${project.title} -- Gallery ${i + 1}`}
+                  src={project.galleryImages?.[i + 3]}
+                  alt={`${project.title} gallery image`}
+                  aspectRatio="3/4"
+                />
+              </ImageReveal>
             ))}
           </div>
 
           {/* Credits */}
           {project.credits.length > 0 && (
             <div className="pt-8 border-t border-border">
-              <h2 className="text-text-muted text-xs tracking-widest uppercase mb-4">
-                Credits
-              </h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <ClipReveal>
+                <h2 className="text-text-muted text-xs tracking-widest uppercase mb-4">
+                  Credits
+                </h2>
+              </ClipReveal>
+              <StaggerContainer
+                className="grid grid-cols-2 sm:grid-cols-3 gap-4"
+                staggerDelay={0.06}
+              >
                 {project.credits.map((credit) => (
-                  <div key={credit.role}>
-                    <p className="text-text-muted text-xs uppercase tracking-wide">
-                      {credit.role}
-                    </p>
-                    <p className="text-text-primary text-sm mt-1">
-                      {credit.name}
-                    </p>
-                  </div>
+                  <StaggerChild key={credit.role}>
+                    <div>
+                      <p className="text-text-muted text-xs uppercase tracking-wide">
+                        {credit.role}
+                      </p>
+                      <p className="text-text-primary text-sm mt-1">{credit.name}</p>
+                    </div>
+                  </StaggerChild>
                 ))}
-              </div>
+              </StaggerContainer>
             </div>
           )}
         </div>
       </section>
 
-      {/* Prev/Next Navigation */}
+      {/* ── Prev/Next Navigation ── */}
       <section className="px-6 md:px-12 py-10 border-t border-border">
         <div className="max-w-4xl mx-auto flex justify-between">
           {prev ? (
@@ -210,7 +227,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* CTA (case study pages are the ONLY pages that get an additional CTA per spec) */}
+      {/* CTA (case study pages only -- per spec) */}
       <SectionCTA
         headline="Let&rsquo;s create something like this for your brand."
         body="Every project starts with a conversation. Tell us about your brand, and we'll show you what's possible."
