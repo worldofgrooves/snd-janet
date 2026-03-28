@@ -1,6 +1,6 @@
 'use client'
 
-import { ManuviProvider } from '@/lib/manuvi'
+import { ManuviProvider } from '@manuvi/sdk'
 
 export default function ManuviWrapper({
   children,
