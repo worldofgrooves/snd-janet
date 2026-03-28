@@ -13,7 +13,7 @@ export default function HomePage() {
     <>
       {/* ── Section 1: Hero (PinnedScene -- pins while content clip-reveals on scroll) ── */}
       <PinnedScene id="hero-scene" pinDuration="+=120%">
-        <div className="w-full px-6 md:px-12 py-24 relative">
+        <div data-manuvi-id="plume-hero" data-manuvi-editable="style" className="w-full px-6 md:px-12 py-24 relative">
           {/* Subtle warm gradient (background plane -- replace with real image when ready) */}
           <div
             className="absolute inset-0 pointer-events-none"
@@ -24,17 +24,19 @@ export default function HomePage() {
           />
           {/* Content */}
           <div className="relative z-10 max-w-4xl mx-auto w-full text-center">
-            <h1 className="scene-title font-display text-display-hero mb-6 text-text-primary">
+            <h1 data-manuvi-id="plume-hero-headline" data-manuvi-editable="both" className="scene-title font-display text-display-hero mb-6 text-text-primary">
               Your brand should feel as intentional
               <br className="hidden md:block" /> as your guest experience.
             </h1>
             <div className="scene-body">
-              <p className="text-text-secondary text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
+              <p data-manuvi-id="plume-hero-subtext" data-manuvi-editable="both" className="text-text-secondary text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
                 Plume Creative develops bespoke brand identities for hospitality,
                 entertainment, and experiential brands.
               </p>
               <Link
                 href="/start"
+                data-manuvi-id="plume-hero-cta"
+                data-manuvi-editable="both"
                 className="inline-block px-9 py-4 bg-accent text-white text-sm font-medium tracking-wider rounded-sm hover:bg-accent-hover transition-colors duration-300"
               >
                 Start a Project
@@ -45,7 +47,7 @@ export default function HomePage() {
       </PinnedScene>
 
       {/* ── Section 2: Featured Work (full-bleed offset masonry) ── */}
-      <section className="px-6 md:px-12 py-16 md:py-24">
+      <section data-manuvi-id="plume-selected-work" data-manuvi-editable="style" className="px-6 md:px-12 py-16 md:py-24">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-end mb-12">
             <ClipReveal>
@@ -165,10 +167,10 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 3: Studio Line ── */}
-      <section className="px-6 md:px-12 py-16 md:py-24 bg-bg-elevated">
+      <section data-manuvi-id="plume-studio-line" data-manuvi-editable="style" className="px-6 md:px-12 py-16 md:py-24 bg-bg-elevated">
         <div className="max-w-4xl mx-auto text-center">
           <ClipReveal duration={1.0}>
-            <p className="font-display text-display-statement text-text-primary">
+            <p data-manuvi-id="plume-studio-statement" data-manuvi-editable="both" className="font-display text-display-statement text-text-primary">
               Strategy-first creative direction for hospitality and experiential brands.
             </p>
           </ClipReveal>
@@ -176,7 +178,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Section 4: Industry Tags (stagger fade via StaggerChild) ── */}
-      <section className="px-6 md:px-12 py-12 md:py-16">
+      <section data-manuvi-id="plume-industries" data-manuvi-editable="style" className="px-6 md:px-12 py-12 md:py-16">
         <div className="max-w-7xl mx-auto">
           <StaggerContainer
             className="flex flex-wrap justify-center gap-x-8 gap-y-3"

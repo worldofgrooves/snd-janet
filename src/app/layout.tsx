@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ManuviWrapper from "@/components/ManuviWrapper";
 
 export const metadata: Metadata = {
   title: "Plume Creative | Brand Identity Studio for Hospitality & Experiential Brands",
@@ -31,9 +32,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Navigation />
-        <main className="flex-1 pt-16 md:pt-20">{children}</main>
-        <Footer />
+        <ManuviWrapper>
+          <Navigation />
+          <main className="flex-1 pt-16 md:pt-20">{children}</main>
+          <Footer />
+        </ManuviWrapper>
       </body>
     </html>
   );

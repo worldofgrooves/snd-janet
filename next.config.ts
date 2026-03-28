@@ -12,6 +12,20 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value:
+              "frame-ancestors 'self' https://manuvi.studio https://*.vercel.app",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
