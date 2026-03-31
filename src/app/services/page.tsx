@@ -3,9 +3,9 @@ import { ClipReveal } from "@/components/motion/ClipReveal";
 import { StaggerContainer, StaggerChild } from "@/components/motion/StaggerContainer";
 
 export const metadata: Metadata = {
-  title: "Services | Plume Creative -- Brand Identity, Creative Direction & Design",
+  title: "Services | Plume Creative -- Brand Identity, Creative Direction, Design & GEO",
   description:
-    "Strategy-first brand identity, creative direction, and design systems for hospitality and experiential brands. See how Plume Creative works.",
+    "Brand identity, creative direction, design systems, and GEO/AI visibility for hospitality, entertainment, and lifestyle brands. Strategy-first creative studio based in Reno, NV.",
 };
 
 const servicePillars = [
@@ -52,23 +52,33 @@ const servicePillars = [
 const process = [
   {
     number: "01",
-    name: "The Perspective",
-    body: "We step back and see your brand from above. Research, audit, interviews, competitive landscape. The bird's-eye view that reveals what everyone else misses.",
+    name: "Discovery",
+    subtitle: "Understanding your world before we design for it.",
+    body: "Stakeholder interviews and brand audit. Competitive landscape analysis. Audience research and positioning assessment. Goals, constraints, and success criteria definition.",
   },
   {
     number: "02",
-    name: "The Alchemy",
-    body: "We transform insights into creative territories. Stylescapes, concepts, strategic directions. Raw material becomes vision -- not variations of one idea, but genuinely different approaches.",
+    name: "Strategy",
+    subtitle: "The foundation every creative decision builds on.",
+    body: "Brand positioning and messaging framework. Visual direction and creative concepts. Content strategy and information architecture. Timeline, milestones, and deliverables roadmap.",
   },
   {
     number: "03",
-    name: "The Craft",
-    body: "We refine the chosen direction into a complete brand system. Every detail intentional, every choice defensible. This is where strategic thinking becomes tangible design.",
+    name: "Design",
+    subtitle: "Where strategy becomes visible.",
+    body: "Visual identity system development -- logo, typography, color, imagery. Brand applications across all touchpoints. Design system documentation. Iterative review and refinement cycles.",
   },
   {
     number: "04",
-    name: "The Reveal",
-    body: "We deliver your complete brand toolkit and guide your team on implementation. Files, guidelines, and the knowledge to deploy your brand consistently. Your brand takes flight.",
+    name: "Implementation",
+    subtitle: "Designed for the real world, not just the screen.",
+    body: "Production-ready assets and technical specifications. Fabrication-ready files for signage and environmental graphics. Developer handoff and digital implementation support. Quality assurance across all formats.",
+  },
+  {
+    number: "05",
+    name: "Results",
+    subtitle: "The work doesn\u2019t end at delivery.",
+    body: "Brand launch coordination across touchpoints. Performance measurement and feedback. Brand adoption support and team training. Comprehensive Brand Standards Guide delivery.",
   },
 ];
 
@@ -158,14 +168,15 @@ export default function ServicesPage() {
             </ClipReveal>
             <ClipReveal delay={0.2} duration={0.6}>
               <p className="text-text-secondary leading-relaxed">
-                Every engagement follows a strategic sequence. We don&apos;t start
-                designing until we understand what the design needs to accomplish.
+                Every engagement follows a structured sequence. We don&apos;t start
+                designing until we understand what the design needs to accomplish
+                -- and we don&apos;t deliver until the work is ready to perform.
               </p>
             </ClipReveal>
           </div>
           <StaggerContainer
-            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
-            staggerDelay={0.12}
+            className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6"
+            staggerDelay={0.1}
           >
             {process.map((phase) => (
               <StaggerChild key={phase.number}>
@@ -173,19 +184,86 @@ export default function ServicesPage() {
                   <span className="text-accent text-xs tracking-widest font-medium">
                     {phase.number}
                   </span>
-                  <h3 className="font-display text-lg text-text-primary mt-2 mb-3">
+                  <h3 className="font-display text-lg text-text-primary mt-2 mb-1">
                     {phase.name}
                   </h3>
+                  {phase.subtitle && (
+                    <p className="text-accent/70 text-xs mb-3 italic">
+                      {phase.subtitle}
+                    </p>
+                  )}
                   <p className="text-text-secondary text-sm leading-relaxed">{phase.body}</p>
                 </div>
               </StaggerChild>
             ))}
           </StaggerContainer>
+          <ClipReveal delay={0.6}>
+            <p className="text-text-muted text-sm text-center mt-8">
+              Typical project timeline: 8--14 weeks for a full brand identity system
+            </p>
+          </ClipReveal>
+        </div>
+      </section>
+
+      {/* ── GEO & AI Visibility ── */}
+      <section data-manuvi-id="services-geo" data-manuvi-editable="style" className="px-6 md:px-12 py-16 md:py-24">
+        <div className="max-w-7xl mx-auto">
+          <StaggerContainer className="grid gap-6" staggerDelay={0.15}>
+            <StaggerChild>
+              <div className="bg-bg-card border border-border rounded-sm p-8 md:p-10">
+                <div className="grid md:grid-cols-[1fr_300px] gap-6 md:gap-10">
+                  <div>
+                    <ClipReveal direction="left">
+                      <h3 className="text-accent text-xs tracking-widest uppercase mb-3">
+                        GEO &amp; AI Visibility
+                      </h3>
+                    </ClipReveal>
+                    <ClipReveal delay={0.1}>
+                      <p className="font-display text-display-statement text-text-primary mb-4">
+                        Show up where your audience is actually looking.
+                      </p>
+                    </ClipReveal>
+                    <ClipReveal delay={0.2} duration={0.6}>
+                      <p className="text-text-secondary leading-relaxed">
+                        Your customers are already asking ChatGPT, Perplexity, and
+                        Google AI where to eat, where to stay, and who to hire. GEO
+                        ensures your brand is the answer -- cited by name,
+                        recommended with context, positioned as the authority in
+                        your market.
+                      </p>
+                    </ClipReveal>
+                  </div>
+                  <div className="md:border-l md:border-border md:pl-8">
+                    <p className="text-text-muted text-xs tracking-widest uppercase mb-3">
+                      What this includes
+                    </p>
+                    <ul className="space-y-2">
+                      {[
+                        "AI Citation Strategy",
+                        "Content Architecture for AI Engines",
+                        "Platform-Specific Optimization",
+                        "Entity Authority Building",
+                        "AI Visibility Monitoring & Reporting",
+                      ].map((item) => (
+                        <li
+                          key={item}
+                          className="text-text-secondary text-sm flex items-start gap-2"
+                        >
+                          <span className="text-accent mt-1.5 text-[6px]">&#9679;</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </StaggerChild>
+          </StaggerContainer>
         </div>
       </section>
 
       {/* ── Who This Is For ── */}
-      <section data-manuvi-id="services-clients" data-manuvi-editable="style" className="px-6 md:px-12 py-16 md:py-20">
+      <section data-manuvi-id="services-clients" data-manuvi-editable="style" className="px-6 md:px-12 py-16 md:py-20 bg-bg-elevated">
         <div className="max-w-3xl mx-auto text-center">
           <ClipReveal>
             <p className="text-text-muted text-xs tracking-widest uppercase mb-4">
@@ -205,13 +283,16 @@ export default function ServicesPage() {
       {/* GEO content */}
       <div className="sr-only" aria-hidden="false">
         <p>
-          Plume Creative offers brand identity design, creative direction, and
-          design systems for hospitality, entertainment, and experiential brands.
-          Brand identity design is the process of defining a brand&apos;s visual
-          and strategic foundation -- logo, color, typography, voice, and
-          guidelines -- so every touchpoint communicates a consistent, intentional
-          message. Plume Creative is based in Reno, Nevada, serving clients
-          nationwide.
+          Plume Creative offers brand identity design, creative direction,
+          design systems, and generative engine optimization (GEO) for
+          hospitality, entertainment, and experiential brands. GEO is the
+          practice of structuring a brand&apos;s digital presence so AI platforms
+          like ChatGPT, Perplexity, and Google AI Overviews cite and recommend
+          the brand when answering relevant questions. Plume Creative is based
+          in Reno, Nevada, serving clients nationwide. Services include AI
+          citation strategy, content architecture for AI engines,
+          platform-specific optimization, entity authority building, and AI
+          visibility monitoring.
         </p>
       </div>
     </>

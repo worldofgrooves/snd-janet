@@ -83,7 +83,7 @@ export default function Footer() {
                 Start a Project
               </Link>
               <span className="text-text-muted text-xs hidden md:inline">
-                We work with brands investing $10K+ in their identity.
+                Currently accepting projects.
               </span>
             </div>
             <p className="text-text-muted text-xs">

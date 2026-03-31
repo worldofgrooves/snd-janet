@@ -1,8 +1,38 @@
+// ─── Filter taxonomy ─────────────────────────────────────────────────────────
+
+export const industries = [
+  "All",
+  "Hospitality",
+  "Entertainment",
+  "Cannabis / Lifestyle",
+  "Food & Beverage",
+  "Confection",
+  "Resort",
+] as const;
+
+export type Industry = (typeof industries)[number];
+
+export const serviceCategories = [
+  "All",
+  "Brand Identity",
+  "Package Design",
+  "Environmental / Signage",
+  "Collateral",
+  "Logo Design",
+  "Game Design",
+  "Artist Identity",
+] as const;
+
+export type ServiceCategory = (typeof serviceCategories)[number];
+
+// ─── Data interfaces ──────────────────────────────────────────────────────────
+
 export interface CaseStudy {
   slug: string;
   title: string;
   client: string;
-  industry: string;
+  industry: Industry;
+  service: ServiceCategory;
   industryTag: string;
   year: string;
   services: string[];
@@ -10,6 +40,10 @@ export interface CaseStudy {
   thumbnailImage?: string;
   heroImage?: string;
   galleryImages?: string[];
+  // Project metadata (for case study credibility)
+  timeline?: string;
+  scope?: string;
+  outcome?: string;
   // Art of Transformation framework
   vision: string;
   canvas: string;
@@ -24,7 +58,8 @@ export interface CaseStudy {
 export interface GalleryProject {
   slug: string;
   title: string;
-  industry: string;
+  industry: Industry;
+  service: ServiceCategory;
   industryTag: string;
   description: string;
   thumbnailImage?: string;
@@ -33,16 +68,7 @@ export interface GalleryProject {
 
 export type Project = CaseStudy | GalleryProject;
 
-export const industries = [
-  "All",
-  "Hospitality",
-  "Entertainment",
-  "Confection",
-  "Cannabis",
-  "Food & Beverage",
-] as const;
-
-export type Industry = (typeof industries)[number];
+// ─── Case Studies ─────────────────────────────────────────────────────────────
 
 export const caseStudies: CaseStudy[] = [
   {
@@ -50,11 +76,15 @@ export const caseStudies: CaseStudy[] = [
     title: "Matices",
     client: "Matices Restaurant Group",
     industry: "Hospitality",
+    service: "Brand Identity",
     industryTag: "Hospitality \u2022 Restaurant \u2022 Truckee, CA",
     year: "2025",
     services: ["Brand Identity", "Environmental Graphics", "Signage"],
     tagline: "Where Mexican culinary tradition meets mountain-town sophistication.",
     thumbnailImage: "/images/project-matices-thumb.webp",
+    timeline: "14 weeks from kickoff to brand guide delivery",
+    scope: "Dual-concept brand identity system: logo suite, typography, color system, 72+ page style guide, menu design, signage program (Truckee historic preservation compliant), website copy",
+    outcome: "Complete brand system launched across 12+ customer touchpoints including facade signage, interior graphics, menus, digital presence, and print collateral. Brand architecture enabled two distinct venue concepts to operate under unified ownership with individual market positioning.",
     vision:
       "Ami\u00e9 Fitzhugh envisioned Matices as more than a restaurant. She wanted to create a cultural experience that honored the depth and nuance of contemporary Mexican cuisine in a mountain town better known for ski lodges than mole. The name itself -- Matices, meaning shades or nuances -- demanded a brand that could hold that complexity with elegance.",
     canvas:
@@ -78,11 +108,15 @@ export const caseStudies: CaseStudy[] = [
     slug: "sunseeker-resort",
     title: "Sunseeker Resort",
     client: "Sunseeker Resort",
-    industry: "Hospitality",
-    industryTag: "Luxury Hospitality \u2022 Resort \u2022 Brand Identity",
+    industry: "Resort",
+    service: "Brand Identity",
+    industryTag: "Luxury Resort \u2022 Brand Identity",
     year: "2024",
     services: ["Brand Identity", "Design Systems", "Collateral"],
     tagline: "A luxury escape designed to feel as curated as it is coastal.",
+    timeline: "10 weeks from discovery to final delivery",
+    scope: "Full brand identity system: primary and secondary logo marks, typography suite, color system, brand guidelines document, digital asset library, collateral templates for guest-facing and operational materials",
+    outcome: "Unified brand language deployed across resort signage, digital channels, guest services, and marketing collateral. Identity system architected for multi-property scalability and future sub-brand extensions.",
     vision:
       "Sunseeker Resort sought to establish a brand identity that encapsulated its aspirational coastal lifestyle, sophisticated amenities, and commitment to unparalleled guest experiences. Their goal was to create a visual and emotional connection with a discerning clientele, positioning the resort as a premier escape where elegance meets tranquility.",
     canvas:
@@ -106,6 +140,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Ocean Resort",
     client: "Ocean Resort",
     industry: "Hospitality",
+    service: "Collateral",
     industryTag: "Hospitality \u2022 Casino Resort \u2022 Collateral System",
     year: "2024",
     services: ["Creative Direction", "Design Systems", "Packaging"],
@@ -132,11 +167,15 @@ export const caseStudies: CaseStudy[] = [
     slug: "paradise-candy",
     title: "Paradise Candy",
     client: "Paradise Candy",
-    industry: "Confection",
-    industryTag: "Confection \u2022 Brand Development",
+    industry: "Cannabis / Lifestyle",
+    service: "Brand Identity",
+    industryTag: "Cannabis \u2022 Lifestyle \u2022 Brand Development",
     year: "2024",
     services: ["Brand Identity", "Packaging Design"],
-    tagline: "Where confection becomes craft and every detail is a treat.",
+    tagline: "Complete brand refresh for a confection brand.",
+    timeline: "10 weeks from brand refresh to launch",
+    scope: "Complete brand refresh: redesigned primary logo, standalone icon mark, custom texture and color palette system, bottle label design, box packaging design, website redesign, cross-format brand application",
+    outcome: "Unified brand presence across retail packaging, digital channels, and direct-to-consumer platforms. Cohesive system replaced patchwork legacy branding, giving the company a single confident presence across retail, packaging, and digital.",
     vision:
       "Paradise Candy wanted to be more than another confection brand on a crowded shelf. They envisioned a brand that would make people feel something before they even tasted the product -- a sense of delight, quality, and playful sophistication that elevated the entire candy-buying experience.",
     canvas:
@@ -160,10 +199,14 @@ export const caseStudies: CaseStudy[] = [
     title: "Full House Resort",
     client: "Full House Resort",
     industry: "Hospitality",
+    service: "Logo Design",
     industryTag: "Hospitality \u2022 Resort \u2022 Brand Identity",
     year: "2023",
     services: ["Brand Identity"],
-    tagline: "A resort brand built to match the scale of its ambition.",
+    tagline: "Brand identity for a boutique Nevada resort.",
+    timeline: "6 weeks from concept to final delivery",
+    scope: "Brand identity system: primary logo, secondary marks, color palette, typography hierarchy, brand guidelines, multi-format application templates for property signage, guest collateral, digital platforms, and environmental branding",
+    outcome: "Cohesive resort identity deployed across property signage, guest-facing collateral, and digital channels. Mark engineered for architectural-to-mobile scale. Scalable foundation for future brand extensions as the property grows.",
     vision:
       "Full House Resort needed a brand identity that could carry the weight of a multi-amenity resort property -- one that communicated sophistication and excitement in equal measure, appealing to both leisure travelers and gaming enthusiasts seeking a premium experience.",
     canvas:
@@ -184,11 +227,32 @@ export const caseStudies: CaseStudy[] = [
   },
 ];
 
+// ─── Gallery Projects ─────────────────────────────────────────────────────────
+
 export const galleryProjects: GalleryProject[] = [
+  {
+    slug: "vida-optima",
+    title: "Vida Optima",
+    industry: "Cannabis / Lifestyle",
+    service: "Package Design",
+    industryTag: "Cannabis \u2022 Lifestyle \u2022 Package Design",
+    description: "Premium cannabis lifestyle brand identity and packaging system built around purposeful living.",
+    type: "gallery",
+  },
+  {
+    slug: "the-den",
+    title: "The Den",
+    industry: "Entertainment",
+    service: "Brand Identity",
+    industryTag: "Entertainment \u2022 Brand Identity",
+    description: "Bold identity for an entertainment venue centered on community, music, and nightlife culture.",
+    type: "gallery",
+  },
   {
     slug: "cbd-nationwide",
     title: "CBD Nationwide",
-    industry: "Cannabis",
+    industry: "Cannabis / Lifestyle",
+    service: "Logo Design",
     industryTag: "Cannabis \u2022 Logo Design",
     description: "Brand identity for a national CBD product line focused on quality and accessibility.",
     type: "gallery",
@@ -197,6 +261,7 @@ export const galleryProjects: GalleryProject[] = [
     slug: "kingchain",
     title: "KINGCHAIN",
     industry: "Entertainment",
+    service: "Artist Identity",
     industryTag: "Entertainment \u2022 Artist Identity",
     description: "Bold identity system for a DJ and producer brand in the electronic music space.",
     type: "gallery",
@@ -205,6 +270,7 @@ export const galleryProjects: GalleryProject[] = [
     slug: "top-secret-recipes",
     title: "Top Secret Recipes",
     industry: "Food & Beverage",
+    service: "Package Design",
     industryTag: "Food & Beverage \u2022 Package Design",
     description: "Packaging system for a specialty food brand with a playful, secretive personality.",
     type: "gallery",
@@ -213,6 +279,7 @@ export const galleryProjects: GalleryProject[] = [
     slug: "sugar-and-salt",
     title: "Sugar & Salt",
     industry: "Food & Beverage",
+    service: "Logo Design",
     industryTag: "Food & Beverage \u2022 Logo Design",
     description: "Brand mark for a confection and snack company balancing sweet and savory product lines.",
     type: "gallery",
@@ -221,6 +288,7 @@ export const galleryProjects: GalleryProject[] = [
     slug: "zhen-bang-noodle",
     title: "Zhen Bang Noodle",
     industry: "Food & Beverage",
+    service: "Logo Design",
     industryTag: "Restaurant \u2022 Logo Design",
     description: "Identity for a noodle restaurant celebrating authentic Chinese culinary tradition.",
     type: "gallery",
@@ -229,6 +297,7 @@ export const galleryProjects: GalleryProject[] = [
     slug: "ring-master",
     title: "Ring Master",
     industry: "Entertainment",
+    service: "Game Design",
     industryTag: "Entertainment \u2022 Game Design",
     description: "Visual identity and game design for an immersive tabletop gaming experience.",
     type: "gallery",

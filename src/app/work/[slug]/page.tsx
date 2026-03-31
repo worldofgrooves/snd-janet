@@ -6,6 +6,7 @@ import SectionCTA from "@/components/SectionCTA";
 import { ClipReveal } from "@/components/motion/ClipReveal";
 import { ImageReveal } from "@/components/motion/ImageReveal";
 import { StaggerContainer, StaggerChild } from "@/components/motion/StaggerContainer";
+import { WorkScrollCard } from "@/components/motion/WorkScrollCard";
 import { caseStudies } from "@/data/projects";
 
 export function generateStaticParams() {
@@ -90,6 +91,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
               { label: "Industry", value: project.industryTag },
               { label: "Year", value: String(project.year) },
               { label: "Services", value: project.services.join(", ") },
+              ...(project.timeline
+                ? [{ label: "Timeline", value: project.timeline }]
+                : []),
             ].map(({ label, value }) => (
               <StaggerChild key={label}>
                 <div>
@@ -101,6 +105,32 @@ export default async function CaseStudyPage({ params }: PageProps) {
               </StaggerChild>
             ))}
           </StaggerContainer>
+
+          {/* Scope & Outcome */}
+          {(project.scope || project.outcome) && (
+            <div className="mt-8 space-y-4">
+              {project.scope && (
+                <div>
+                  <span className="text-text-muted text-xs tracking-widest uppercase block mb-1">
+                    Scope
+                  </span>
+                  <p className="text-text-secondary text-sm leading-relaxed">
+                    {project.scope}
+                  </p>
+                </div>
+              )}
+              {project.outcome && (
+                <div>
+                  <span className="text-text-muted text-xs tracking-widest uppercase block mb-1">
+                    Outcome
+                  </span>
+                  <p className="text-text-secondary text-sm leading-relaxed">
+                    {project.outcome}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
@@ -226,6 +256,42 @@ export default async function CaseStudyPage({ params }: PageProps) {
           )}
         </div>
       </section>
+
+      {/* ── Other Works ── */}
+      {(() => {
+        const otherWorks = caseStudies
+          .filter((p) => p.slug !== project.slug)
+          .slice(0, 3);
+        return otherWorks.length > 0 ? (
+          <section
+            data-manuvi-id="casestudy-other-works"
+            data-manuvi-editable="style"
+            className="px-6 md:px-12 py-14 md:py-20 border-t border-border"
+          >
+            <div className="max-w-7xl mx-auto">
+              <ClipReveal>
+                <h2 className="font-display text-display-statement mb-10">
+                  Other Work
+                </h2>
+              </ClipReveal>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {otherWorks.map((p) => (
+                  <WorkScrollCard
+                    key={p.slug}
+                    href={`/work/${p.slug}`}
+                    title={p.title}
+                    tagline={p.tagline}
+                    year={p.year}
+                    thumbnailImage={p.thumbnailImage}
+                    imageAlt={`${p.title} brand identity case study`}
+                    aspectRatio="4/3"
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null;
+      })()}
 
       {/* CTA (case study pages only -- per spec) */}
       <SectionCTA

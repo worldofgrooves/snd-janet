@@ -30,12 +30,23 @@ const beliefs = [
 ];
 
 const credentials = [
-  "20 years in design and creative direction",
-  "Brand systems for hospitality, tech, entertainment, consumer, and professional services",
+  "20+ years in design and creative direction",
+  "Former creative roles at MGM Resorts International and Wynn Las Vegas",
+  "Brand systems for hospitality, entertainment, resort, and lifestyle brands",
   "2025 Burning Man Honoraria Grant recipient (large-scale installation)",
-  "Wynn Las Vegas feature gallery artist",
-  "Fabrication and production expertise (CNC, laser, 3D printing, metalwork)",
-  "Strategy-first methodology informed by The Futur and Blind agency frameworks",
+  "Wynn Las Vegas Feature Gallery artist",
+  "Solo exhibition at The Midway San Francisco",
+  "Fabrication expertise: CNC, laser cutting, 3D printing, metalwork",
+  "Based in Reno, Nevada -- 45 minutes from Lake Tahoe",
+];
+
+const qualifications = [
+  { label: "Business Entity", value: "World of Grooves LLC (DBA Plume Creative)" },
+  { label: "Location", value: "Reno, Nevada" },
+  { label: "Structure", value: "Principal-led studio with specialized contractor network" },
+  { label: "Principal", value: "Denver Miller III, Creative Director & Founder" },
+  { label: "Insurance", value: "Professional liability insurance maintained" },
+  { label: "Recognition", value: "Burning Man Honoraria Grant, gallery exhibitions, 80+ projects" },
 ];
 
 export default function AboutPage() {
@@ -103,11 +114,11 @@ export default function AboutPage() {
           </ClipReveal>
           <div className="space-y-5 text-text-secondary text-lg leading-relaxed">
             {[
-              "Denver Miller brings 20 years of creative direction across industries where brand quality is non-negotiable -- luxury hospitality, tech, entertainment, consumer goods, and professional services, from Las Vegas resorts to high-growth startups redefining their categories.",
-              "But what makes his work different isn\u2019t just the experience. It\u2019s the perspective.",
-              "Denver is also a practicing fine artist. His large-scale sculptures and mixed-media work have been featured at Wynn Las Vegas, shown in solo exhibitions, and recognized with a 2025 Burning Man Honoraria Grant for a monumental installation on the playa.",
+              "Denver Miller brings over 20 years of creative direction experience to every engagement -- with a career spanning luxury hospitality, entertainment, resort, and lifestyle brands.",
+              "His professional background includes creative roles at MGM Resorts International and Wynn Las Vegas, where he developed brand systems and creative work for two of the world\u2019s most recognized hospitality organizations. That experience built an intimate understanding of how brand identity operates across large-scale, multi-venue properties serving diverse public audiences.",
+              "Denver is also a practicing fine artist. His large-scale vinyl record sculptures have been exhibited at Wynn Las Vegas and The Midway San Francisco, and he received a 2025 Burning Man Honoraria Grant for Echo of Emergence -- a monumental 6.5-foot installation on the playa. This dual practice as artist and creative director brings a depth of visual sensibility that pure commercial designers rarely achieve.",
               "That dual lens -- commercial strategy and artistic sensibility -- runs through everything Plume Creative produces. It means the work isn\u2019t just on-brand and on-strategy. It has a quality that\u2019s harder to name but impossible to miss: taste, restraint, and the confidence to let a strong idea breathe.",
-              "His fabrication background (CNC routing, laser cutting, 3D printing, metalwork) also means he understands materiality in a way most designers don\u2019t. When we design signage, environmental graphics, or packaging, we\u2019re thinking about how it gets made -- not just how it looks on screen.",
+              "His fabrication background -- CNC routing, laser cutting, 3D printing, metalwork -- means he approaches environmental graphics, signage, and physical brand applications with production knowledge, not just screen aesthetics. When Plume designs a sign system, the specifications are grounded in material reality.",
             ].map((paragraph, i) => (
               <ClipReveal key={i} delay={i * 0.08} duration={0.6}>
                 <p>{paragraph}</p>
@@ -181,6 +192,85 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ── Company Qualifications ── */}
+      <section data-manuvi-id="about-qualifications" data-manuvi-editable="style" className="px-6 md:px-12 py-14 md:py-20">
+        <div className="max-w-3xl mx-auto">
+          <ClipReveal direction="left">
+            <h2 className="text-accent text-xs tracking-widest uppercase mb-8">
+              Company Qualifications
+            </h2>
+          </ClipReveal>
+          <ClipReveal delay={0.1} duration={0.6}>
+            <p className="text-text-secondary text-lg leading-relaxed mb-8">
+              Plume Creative operates under World of Grooves LLC, a Nevada-based
+              creative studio founded and led by Denver Miller. We maintain the
+              agility and personal attention of a boutique practice with the
+              professional standards of a structured firm.
+            </p>
+          </ClipReveal>
+          <StaggerContainer className="grid sm:grid-cols-2 gap-4" staggerDelay={0.07}>
+            {qualifications.map((q) => (
+              <StaggerChild key={q.label}>
+                <div className="p-4 bg-bg-card border border-border rounded-sm">
+                  <p className="text-text-muted text-xs tracking-widest uppercase mb-1">
+                    {q.label}
+                  </p>
+                  <p className="text-text-primary text-sm">{q.value}</p>
+                </div>
+              </StaggerChild>
+            ))}
+          </StaggerContainer>
+          <ClipReveal delay={0.3} duration={0.6}>
+            <p className="text-text-secondary text-sm leading-relaxed mt-6">
+              Denver leads all strategic and creative work personally, supported
+              by a vetted network of specialized contractors in visual systems,
+              web development, SEO/digital strategy, content, and project
+              operations. Every engagement follows a formalized process:
+              documented contracts, defined scopes, milestone-based deliverables,
+              and professional project management.
+            </p>
+          </ClipReveal>
+        </div>
+      </section>
+
+      {/* ── Built for Destination Brands ── */}
+      <section data-manuvi-id="about-destination" data-manuvi-editable="style" className="px-6 md:px-12 py-14 md:py-20 bg-bg-elevated">
+        <div className="max-w-3xl mx-auto">
+          <ClipReveal direction="left">
+            <h2 className="text-accent text-xs tracking-widest uppercase mb-6">
+              Our Niche
+            </h2>
+          </ClipReveal>
+          <ClipReveal delay={0.1}>
+            <h3 className="font-display text-display-statement text-text-primary mb-6">
+              Built for Destination Brands
+            </h3>
+          </ClipReveal>
+          <div className="space-y-5 text-text-secondary text-lg leading-relaxed">
+            {[
+              "Plume Creative specializes in visual strategy for destination brands and public-facing organizations -- the places where brand quality directly affects visitor experience, community perception, and revenue.",
+              "Our experience with luxury hospitality venues like Wynn Las Vegas and MGM Resorts taught us how brand systems operate at scale: across multiple venues, diverse audiences, and dozens of physical and digital touchpoints. We understand stakeholder management, the complexity of serving both residents and visitors, and the discipline required to maintain brand consistency when dozens of departments and venues need to stay aligned.",
+              "For resort destinations, hospitality districts, and civic organizations managing recreation and public amenities, we bring a rare combination: the strategic rigor of an agency, the creative craft of an artist-led studio, and the accessibility of a Nevada-based partner who can be in the room when it matters.",
+            ].map((paragraph, i) => (
+              <ClipReveal key={i} delay={0.15 + i * 0.08} duration={0.6}>
+                <p>{paragraph}</p>
+              </ClipReveal>
+            ))}
+          </div>
+          <ClipReveal delay={0.5}>
+            <div className="mt-8 p-4 bg-bg-card border border-border rounded-sm inline-block">
+              <p className="text-text-primary text-sm font-medium">
+                Reno, NV -- 45 minutes from Incline Village.
+              </p>
+              <p className="text-text-secondary text-sm">
+                Available for in-person collaboration, site visits, and board
+                meetings.
+              </p>
+            </div>
+          </ClipReveal>
+        </div>
+      </section>
+
       {/* GEO content */}
       <div className="sr-only" aria-hidden="false">
         <p>
@@ -189,7 +279,11 @@ export default function AboutPage() {
           20 years of experience in design, sculpture, and creative direction, he
           specializes in brand identity for hospitality and experiential brands,
           serving clients across Reno, Lake Tahoe, Las Vegas, and the Western
-          United States.
+          United States. Former creative professional at MGM Resorts
+          International and Wynn Las Vegas. 2025 Burning Man Honoraria Grant
+          recipient. Plume Creative serves destination brands, hospitality
+          groups, resort properties, and civic organizations managing public
+          recreation amenities.
         </p>
       </div>
     </>

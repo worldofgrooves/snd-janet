@@ -1,9 +1,8 @@
 import Link from "next/link";
-import PlaceholderImage from "@/components/PlaceholderImage";
 import { ClipReveal } from "@/components/motion/ClipReveal";
-import { ImageReveal } from "@/components/motion/ImageReveal";
 import { PinnedScene } from "@/components/motion/PinnedScene";
 import { StaggerContainer, StaggerChild } from "@/components/motion/StaggerContainer";
+import { WorkScrollCard } from "@/components/motion/WorkScrollCard";
 import { caseStudies } from "@/data/projects";
 
 const featured = caseStudies.slice(0, 5);
@@ -66,95 +65,64 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
 
             {/* Large: Matices (7 cols) */}
-            <ImageReveal delay={0} className="md:col-span-7">
-              <Link href={`/work/${featured[0].slug}`} className="group block relative overflow-hidden">
-                <PlaceholderImage
-                  label={`${featured[0].title} -- Brand Identity`}
-                  src={featured[0].thumbnailImage}
-                  alt={`${featured[0].title} brand identity project`}
-                  aspectRatio="16/10"
-                  className="w-full"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-6 gradient-overlay-bottom pointer-events-none">
-                  <ClipReveal delay={0.35}>
-                    <h3 className="font-display text-xl text-white mb-1">{featured[0].title}</h3>
-                    <p className="text-white/70 text-sm italic">{featured[0].tagline}</p>
-                  </ClipReveal>
-                </div>
-              </Link>
-            </ImageReveal>
+            <WorkScrollCard
+              href={`/work/${featured[0].slug}`}
+              title={featured[0].title}
+              tagline={featured[0].tagline}
+              year={featured[0].year}
+              thumbnailImage={featured[0].thumbnailImage}
+              imageAlt={`${featured[0].title} brand identity project`}
+              aspectRatio="16/10"
+              className="md:col-span-7"
+            />
 
             {/* Medium: Sunseeker (5 cols) */}
-            <ImageReveal delay={0.12} className="md:col-span-5">
-              <Link href={`/work/${featured[1].slug}`} className="group block relative overflow-hidden">
-                <PlaceholderImage
-                  label={`${featured[1].title} -- Brand Identity`}
-                  alt={`${featured[1].title} brand identity project`}
-                  aspectRatio="4/3"
-                  className="w-full"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-6 gradient-overlay-bottom pointer-events-none">
-                  <ClipReveal delay={0.45}>
-                    <h3 className="font-display text-xl text-white mb-1">{featured[1].title}</h3>
-                    <p className="text-white/70 text-sm italic">{featured[1].tagline}</p>
-                  </ClipReveal>
-                </div>
-              </Link>
-            </ImageReveal>
+            <WorkScrollCard
+              href={`/work/${featured[1].slug}`}
+              title={featured[1].title}
+              tagline={featured[1].tagline}
+              year={featured[1].year}
+              thumbnailImage={featured[1].thumbnailImage}
+              imageAlt={`${featured[1].title} brand identity project`}
+              aspectRatio="4/3"
+              className="md:col-span-5"
+            />
 
             {/* Medium: Ocean Resort (5 cols) */}
-            <ImageReveal delay={0.24} className="md:col-span-5">
-              <Link href={`/work/${featured[2].slug}`} className="group block relative overflow-hidden">
-                <PlaceholderImage
-                  label={`${featured[2].title} -- Design Systems`}
-                  alt={`${featured[2].title} collateral design project`}
-                  aspectRatio="4/3"
-                  className="w-full"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-6 gradient-overlay-bottom pointer-events-none">
-                  <ClipReveal delay={0.5}>
-                    <h3 className="font-display text-xl text-white mb-1">{featured[2].title}</h3>
-                    <p className="text-white/70 text-sm italic">{featured[2].tagline}</p>
-                  </ClipReveal>
-                </div>
-              </Link>
-            </ImageReveal>
+            <WorkScrollCard
+              href={`/work/${featured[2].slug}`}
+              title={featured[2].title}
+              tagline={featured[2].tagline}
+              year={featured[2].year}
+              thumbnailImage={featured[2].thumbnailImage}
+              imageAlt={`${featured[2].title} collateral design project`}
+              aspectRatio="4/3"
+              className="md:col-span-5"
+            />
 
             {/* Large: Paradise Candy (7 cols) */}
-            <ImageReveal delay={0.12} className="md:col-span-7">
-              <Link href={`/work/${featured[3].slug}`} className="group block relative overflow-hidden">
-                <PlaceholderImage
-                  label={`${featured[3].title} -- Brand Development`}
-                  alt={`${featured[3].title} brand identity project`}
-                  aspectRatio="16/10"
-                  className="w-full"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-6 gradient-overlay-bottom pointer-events-none">
-                  <ClipReveal delay={0.35}>
-                    <h3 className="font-display text-xl text-white mb-1">{featured[3].title}</h3>
-                    <p className="text-white/70 text-sm italic">{featured[3].tagline}</p>
-                  </ClipReveal>
-                </div>
-              </Link>
-            </ImageReveal>
+            <WorkScrollCard
+              href={`/work/${featured[3].slug}`}
+              title={featured[3].title}
+              tagline={featured[3].tagline}
+              year={featured[3].year}
+              thumbnailImage={featured[3].thumbnailImage}
+              imageAlt={`${featured[3].title} brand identity project`}
+              aspectRatio="16/10"
+              className="md:col-span-7"
+            />
 
             {/* Centered: Full House Resort */}
-            <ImageReveal delay={0} className="md:col-span-12 md:max-w-2xl md:mx-auto w-full">
-              <Link href={`/work/${featured[4].slug}`} className="group block relative overflow-hidden">
-                <PlaceholderImage
-                  label={`${featured[4].title} -- Brand Identity`}
-                  alt={`${featured[4].title} brand identity project`}
-                  aspectRatio="16/9"
-                  className="w-full"
-                />
-                <div className="absolute bottom-0 left-0 right-0 p-6 gradient-overlay-bottom pointer-events-none">
-                  <ClipReveal delay={0.25}>
-                    <h3 className="font-display text-xl text-white mb-1">{featured[4].title}</h3>
-                    <p className="text-white/70 text-sm italic">{featured[4].tagline}</p>
-                  </ClipReveal>
-                </div>
-              </Link>
-            </ImageReveal>
+            <WorkScrollCard
+              href={`/work/${featured[4].slug}`}
+              title={featured[4].title}
+              tagline={featured[4].tagline}
+              year={featured[4].year}
+              thumbnailImage={featured[4].thumbnailImage}
+              imageAlt={`${featured[4].title} brand identity project`}
+              aspectRatio="16/9"
+              className="md:col-span-12 md:max-w-2xl md:mx-auto w-full"
+            />
 
           </div>
 
@@ -177,7 +145,56 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Section 4: Industry Tags (stagger fade via StaggerChild) ── */}
+      {/* ── Section 4: Testimonials ── */}
+      <section data-manuvi-id="plume-testimonials" data-manuvi-editable="style" className="px-6 md:px-12 py-16 md:py-24">
+        <div className="max-w-4xl mx-auto">
+          <ClipReveal direction="left">
+            <p className="text-accent text-xs tracking-widest uppercase mb-10 text-center">
+              What They Say
+            </p>
+          </ClipReveal>
+          <div className="space-y-10">
+            {[
+              {
+                quote:
+                  "Denver is a creative force. His thoughtful approach to creative development, collaboration and team building are evidenced by his body of work and lasting relationships. He has the unique ability to apply those methods of thinking outside their respective disciplines to yield innovative creative solutions.",
+                name: "Alexandra Smith",
+                title: "Design Director, MGM Resorts International",
+              },
+              {
+                quote:
+                  "He is an artistic talent that will add to the creativity of any job thrown his way. He has a thirst for this creative world, and is always asking questions or coming up with solutions to push visual and concept driven boundaries.",
+                name: "Steve Averitt",
+                title: "Owner & Creative Director, Averitt Creative",
+              },
+              {
+                quote:
+                  "Denver is not only one of the most creative people I\u2019ve worked with, he is also one of the most authentic and enthusiastic creatives in the industry. His versatility is evident when you see his art, listen to his music, browse his portfolio or just engage in a conversation.",
+                name: "EJ Luera",
+                title: "Owner, Feature Sneaker Boutique",
+              },
+            ].map((testimonial, i) => (
+              <ClipReveal key={testimonial.name} delay={i * 0.1}>
+                <blockquote className="border-l-2 border-accent/30 pl-6">
+                  <p className="text-text-secondary text-lg leading-relaxed italic mb-4">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </p>
+                  <footer>
+                    <p className="text-text-primary text-sm font-medium">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-text-muted text-xs">
+                      {testimonial.title}
+                    </p>
+                  </footer>
+                </blockquote>
+              </ClipReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Section 5: Industry Tags (stagger fade via StaggerChild) ── */}
       <section data-manuvi-id="plume-industries" data-manuvi-editable="style" className="px-6 md:px-12 py-12 md:py-16">
         <div className="max-w-7xl mx-auto">
           <StaggerContainer
